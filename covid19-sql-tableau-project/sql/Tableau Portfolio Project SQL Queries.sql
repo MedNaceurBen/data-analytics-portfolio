@@ -31,7 +31,7 @@ SELECT
     SUM(new_cases) AS total_cases, 
     SUM(CAST(new_deaths AS INT)) AS total_deaths, 
     SUM(CAST(new_deaths AS INT)) / SUM(new_cases) * 100 AS DeathPercentage
-FROM PortofolioProject.dbo.CovidDeaths
+FROM PortfolioProject.dbo.CovidDeaths
 WHERE continent IS NOT NULL
 ORDER BY 1,2;
 
@@ -55,7 +55,7 @@ The main query was kept for alignment with other datasets.
 SELECT 
     location, 
     SUM(CAST(new_deaths AS INT)) AS TotalDeathCount
-FROM PortofolioProject.dbo.CovidDeaths
+FROM PortfolioProject.dbo.CovidDeaths
 WHERE continent IS NULL
   AND location NOT IN ('World', 'European Union', 'International')
 GROUP BY location
@@ -75,7 +75,7 @@ SELECT
     Population, 
     MAX(total_cases) AS HighestInfectionCount,  
     MAX((total_cases / population) * 100) AS PercentPopulationInfected
-FROM PortofolioProject.dbo.CovidDeaths
+FROM PortfolioProject.dbo.CovidDeaths
 GROUP BY Location, Population
 ORDER BY PercentPopulationInfected DESC;
 
@@ -93,7 +93,7 @@ SELECT
     date, 
     MAX(total_cases) AS HighestInfectionCount,  
     MAX((total_cases / population) * 100) AS PercentPopulationInfected
-FROM PortofolioProject.dbo.CovidDeaths
+FROM PortfolioProject.dbo.CovidDeaths
 GROUP BY Location, Population, date
 ORDER BY PercentPopulationInfected DESC;
 
